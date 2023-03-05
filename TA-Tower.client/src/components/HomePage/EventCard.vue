@@ -146,6 +146,6 @@ h6 {
 }
 
 .selectable:hover {
-  box-shadow: 0 0 11px antiquewhite;
+  box-shadow: 0 0 11px ani;
 }
 </style>
