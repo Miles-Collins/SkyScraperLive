@@ -4,19 +4,20 @@
 
     <EventFilterBar />
 
-    <div class="row d-flex justify-content-center">
-      <h1 class="fontColor"><u>Upcoming Events</u></h1>
-      <h5 class="fontColor" v-if="!events[0]">There are currently no upcoming Events.</h5>
+    <div class="row d-flex justify-content-center mt-2">
+      <h1 class="fontColor text-center text-md-start"><u>Upcoming Events</u></h1>
+      <h6 class="fontColor text-center text-md-start mt-5 mt-md-0" v-if="!events[0]">There are currently no upcoming
+        Events.</h6>
       <div class="col-11">
-        <div class="row">
+        <div class="row mt-2">
           <div v-for="e in events" class="col-12 col-sm-6 col-md-6 col-lg-3">
             <EventCard :event="e" />
           </div>
         </div>
       </div>
     </div>
-    <div class="row d-flex justify-content-center">
-      <h1 class="fontColor"><u>Past Events</u></h1>
+    <div class="row d-flex justify-content-center mt-5">
+      <h1 class="fontColor text-center text-md-start"><u>Past Events</u></h1>
       <div class="col-11">
         <div class="row">
           <div v-for="e in pastEvents" class="col-12 col-sm-6 col-md-6 col-lg-3">

@@ -19,7 +19,7 @@ export default {
 
 
   setup(props) {
-    const editable = ref({})
+    let editable = ref({})
 
 
     return {
@@ -30,6 +30,7 @@ export default {
           editable.value.eventId = AppState.activeEvent.id
           console.log('[COMMENT]', editable.value);
           await commentsService.createComment(editable.value)
+          ref = {}
         } catch (error) {
           console.error(error)
           // @ts-ignore

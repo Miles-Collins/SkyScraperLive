@@ -1,19 +1,17 @@
 <template>
-  <div class="row mb-3">
-    <div class="col-2 ">
-      <img class="img-fluid avatar" :src="comment.creator.picture" alt="" srcset="">
-    </div>
-    <div class="col-10 commentBg">
-      <div class="row">
-        <div class="col-4">
-          <h5>{{ comment.creator.name }}</h5>
-        </div>
-        <div v-if="comment.isAttending == true" class="col-4">
-          <h5 class="isAttending">Is attending</h5>
-        </div>
-        <div class="col-12">
-          <p>{{ comment.body }}</p>
-        </div>
+  <div class="col-3 col-md-2 d-flex align-items-center my-3">
+    <img class="img-fluid avatar" :src="comment.creator.picture" alt="" srcset="">
+  </div>
+  <div class="col-9 col-md-10 my-2 commentBg">
+    <div class="row">
+      <div class="col-4">
+        <h5>{{ comment.creator.name }}</h5>
+      </div>
+      <div v-if="comment.isAttending == true" class="col-4">
+        <h5 class="isAttending">Is attending</h5>
+      </div>
+      <div class="col-12">
+        <p>{{ comment.body }}</p>
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <template>
-
-  <div @click="routeToEventPage()" :style="{ backgroundImage: `url(${event.coverImg})` }" class="test text-center row">
+  <div @click="routeToEventPage()" :style="{ backgroundImage: `url(${event.coverImg})` }"
+    class="selectable test text-center row">
     <div v-if="event.isCanceled == false && event.capacity > 0" class="col-12 fillBox">
     </div>
     <div v-if="event.isCanceled == false && event.capacity > 0" class="col-12 autoHeight">
       <div class="row">
-        <h5 class="col-12">{{ event.name }}</h5>
+        <h6 class="col-12">{{ event.name }}</h6>
         <div class="col-12">{{ event.location }}</div>
         <div class="col-12"><i class="mdi mdi-calendar"></i>{{ new Date(event.startDate).toLocaleDateString() }}</div>
         <div class="col-12 text-end"><span class="green">{{ event.capacity }}</span> spots left</div>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="row autoHeight">
-        <h5 class="col-12">{{ event.name }}</h5>
+        <h6 class="col-12">{{ event.name }}</h6>
         <div class="col-12">{{ event.location }}</div>
         <div class="col-12"><i class="mdi mdi-calendar"></i>{{ new Date(event.startDate).toLocaleDateString() }}
         </div>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="row autoHeight">
-        <h5 class="col-12">{{ event.name }}</h5>
+        <h6 class="col-12">{{ event.name }}</h6>
         <div class="col-12">{{ event.location }}</div>
         <div class="col-12"><i class="mdi mdi-calendar"></i>{{ new Date(event.startDate).toLocaleDateString() }}
         </div>
@@ -40,7 +40,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -73,7 +72,7 @@ export default {
           router.push({ name: 'Event', params: { id: eventId } })
         } catch (error) {
           console.error(error)
-          // @ts-ignore 
+          // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }
       }
@@ -84,14 +83,16 @@ export default {
 
 <style>
 .test {
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
   background-size: cover;
   background-repeat: no-repeat;
   height: 30Vh;
   width: auto;
-
+  margin-top: 5vh;
   margin-left: .1px;
   margin-right: .1px;
-  border-radius: 3%;
+  border-radius: 25px;
 }
 
 .fillBox {
@@ -107,19 +108,18 @@ export default {
   -webkit-backdrop-filter: blur(7.6px);
   color: white;
   text-shadow: 2px 1px 2px black;
+  font-size: .85rem;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .autoHeightCanceled {
-  height: 100%;
   text-align: start;
-  background: rgba(16, 15, 15, 0.72);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.6px);
+  backdrop-filter: blur(2.6px);
   -webkit-backdrop-filter: blur(7.6px);
   color: white;
   text-shadow: 2px 1px 2px black;
   position: static;
-  border-radius: 5px;
 }
 
 .green {
@@ -144,6 +144,13 @@ export default {
   height: 75%;
   width: 90%;
   top: 10%;
+}
 
+h6 {
+  font-size: .9rem;
+}
+
+.selectable:hover {
+  box-shadow: 0 0 11px antiquewhite;
 }
 </style>

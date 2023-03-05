@@ -8,8 +8,8 @@
   </div>
   <div class="row d-flex justify-content-center">
     <div class="col-11">
-      <div class="row">
-        <div v-for="e in events" class="col-3">
+      <div class="row d-flex justify-content-center">
+        <div v-for="e in events" class=" col-10 my-3 col-md-3">
           <EventCard :event="e" />
         </div>
       </div>
@@ -53,7 +53,7 @@ export default {
       }
       catch (error) {
         console.error(error);
-        // @ts-ignore 
+        // @ts-ignore
         Pop.error(("[ERROR]"), error.message);
       }
     }
@@ -63,7 +63,7 @@ export default {
         await accountService.getTickets()
       } catch (error) {
         console.error(error)
-        // @ts-ignore 
+        // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
     }

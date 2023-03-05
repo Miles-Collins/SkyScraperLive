@@ -17,23 +17,32 @@ class EventsService {
     events.forEach((event) => {
       event.startDate = new Date(event.startDate).getTime();
       // console.log(event.startDate);
-      if (event.startDate > todaysDate) {
+      if (
+        event.startDate > todaysDate &&
+        !AppState.currentEvents.some((event) => event.id == event.id)
+      ) {
         AppState.currentEvents.push(event);
-      } else {
+      } else if (
+        !AppState.currentEvents.some((event) => event.id == event.id)
+      ) {
         AppState.pastEvents.push(event);
       }
     });
   }
 
   async filterEvents(eventName) {
-    const res = await api.get("api/events");
-    AppState.events = res.data;
+    await this.getCurrentEvents();
     if (eventName != "all") {
-      let filter = AppState.events.filter((event) =>
+      let filter = AppState.currentEvents.filter((event) =>
         eventName ? event.type == eventName : true
       );
       logger.log("[FILTERED EVENTS]", filter);
-      AppState.events = filter;
+      AppState.currentEvents = filter;
+      let filterOldEvents = AppState.pastEvents.filter((event) =>
+        eventName ? event.type == eventName : true
+      );
+      logger.log("[FILTERED EVENTS]", filterOldEvents);
+      AppState.pastEvents = filterOldEvents;
     }
   }
 
@@ -71,7 +80,7 @@ class EventsService {
   async createEvent(eventBody) {
     const res = await api.post("api/events", eventBody);
     console.log("[CREATED EVENT]", res.data);
-    AppState.events.unshift(res.data);
+    AppState.currentEvents.unshift(res.data);
     return res.data;
   }
 

@@ -1,51 +1,51 @@
 <template>
-
-  <div v-if="ticket.event.isCanceled == false" class="row ticket my-4">
-    <div class="circle"></div>
-    <div class="col-4">
-      <div class="row">
-        <div class="col-12 p-0">
-          <img class="" :src="ticket.event.coverImg" alt="" srcset="">
+  <div class="d-none d-md-block">
+    <div v-if="ticket.event.isCanceled == false" class="row ticket my-4">
+      <div class="circle"></div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-12 p-0">
+            <img class="" :src="ticket.event.coverImg" alt="" srcset="">
+          </div>
+        </div>
+      </div>
+      <div class="col-8 d-flex align-items-center">
+        <div class="row">
+          <div class="col-11 offset-1 ">
+            <h5>{{ ticket.event.name }}</h5>
+          </div>
+          <div class="col-11 offset-1 mt-2">
+            <h6>{{ ticket.event.location }}</h6>
+          </div>
+          <div class="col-11 offset-1">
+            <h6><i class="mdi mdi-calendar"></i>&nbsp;{{ new Date(ticket.event.startDate).toLocaleDateString() }}</h6>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-8">
-      <div class="row">
-        <div class="col-12 my-3">
-          <h5>{{ ticket.event.name }}</h5>
+    <div v-if="ticket.event.isCanceled == true" class="row ticket mt-5">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-12 p-0">
+            <img class="" :src="ticket.event.coverImg" alt="" srcset="">
+          </div>
         </div>
-        <div class="col-12 mt-2">
-          <h6>{{ ticket.event.location }}</h6>
-        </div>
-        <div class="col-12">
-          <h6><i class="mdi mdi-calendar"></i>&nbsp;{{ new Date(ticket.event.startDate).toLocaleDateString() }}</h6>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12">
+            <h5>{{ ticket.event.name }}</h5>
+          </div>
+          <div class="col-12">
+            <h6>{{ ticket.event.location }}</h6>
+          </div>
+          <div class="col-12">
+            <h6>{{ new Date(ticket.event.startDate).toLocaleDateString() }}</h6>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div v-if="ticket.event.isCanceled == true" class="row ticket mt-5">
-    <div class="col-4">
-      <div class="row">
-        <div class="col-12 p-0">
-          <img class="" :src="ticket.event.coverImg" alt="" srcset="">
-        </div>
-      </div>
-    </div>
-    <div class="col-8">
-      <div class="row">
-        <div class="col-12">
-          <h5>{{ ticket.event.name }}</h5>
-        </div>
-        <div class="col-12">
-          <h6>{{ ticket.event.location }}</h6>
-        </div>
-        <div class="col-12">
-          <h6>{{ new Date(ticket.event.startDate).toLocaleDateString() }}</h6>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </template>
 
 <script>

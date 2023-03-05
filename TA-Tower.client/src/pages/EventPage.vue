@@ -6,14 +6,14 @@
   <div class="container mt-5 ">
     <h5 class="textColor">See who's attending</h5>
     <div class="row avatarBarBg">
-      <div class="col-1 px-0 d-flex justify-content-center" v-for="th in ticketHolders">
+      <div class="col-2 col-md-1 px-0 d-flex justify-content-center" v-for="th in ticketHolders">
         <AvatarBar :ticketHolder="th" />
       </div>
     </div>
   </div>
 
   <div class="row mt-5">
-    <div class="col-8 mx-auto">
+    <div class="col-11 col-md-8 mx-auto">
       <CommentBox />
     </div>
   </div>

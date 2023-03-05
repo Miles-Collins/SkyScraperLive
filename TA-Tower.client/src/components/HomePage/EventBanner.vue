@@ -1,15 +1,13 @@
 <template>
-
   <div class="mt-4 row d-flex justify-content-center">
     <div class="col-11 eventBackground text-light">
       <div class="row">
-        <div class="col-5 offset-4">
+        <div class="col-12 col-md-5 offset-md-4 d-flex justify-content-center justify-md-content-none d-flex-md-none">
           <h1 class="textShadow">BUY YOUR TICKETS NOW!!!!</h1>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>

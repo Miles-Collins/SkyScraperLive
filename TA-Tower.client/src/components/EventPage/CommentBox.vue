@@ -7,7 +7,7 @@
       <h5 class="text-end textColorGreen">Join the conversation</h5>
     </div>
     <CommentForm />
-    <div v-for="c in comments" class="row">
+    <div v-for="c in comments" class="row d-flex justify-content-center">
       <Comments :comment="c" />
     </div>
   </div>

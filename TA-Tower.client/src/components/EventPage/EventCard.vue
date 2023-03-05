@@ -1,11 +1,11 @@
 <template>
-  <div v-if="event" class="mt-5">
+  <div v-if="event" class="mt-5 d-none d-md-block">
     <div :style="{ backgroundImage: `url(${event.coverImg})` }" class="row rowHeight mx-auto">
       <div class="col-12 text-light autoHeight">
-        <div class="row">
+        <div class="row cardHeight">
           <!-- LEFT HALF -->
-          <div class="col-4">
-            <img class="img-fluid my-4" :src="event.coverImg" alt="" srcset="">
+          <div class="col-4 d-flex align-items-center">
+            <img class="cardHeight my-4" :src="event.coverImg" alt="" srcset="">
           </div>
           <!-- RIGHT HALF -->
           <div class="col-8">
@@ -64,6 +64,74 @@
                     class="mdi mdi-account-check"></i></button>
               </div>
               <div v-if="isAttending && event.isCanceled == false" class="col-6 text-end">
+                <button @click="deleteTicket" class="btn btn-warning">Unreserve <i
+                    class="mdi mdi-account-check"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="event" class="mt-5 d-block d-md-none">
+    <div :style="{ backgroundImage: `url(${event.coverImg})` }" class="row  mx-auto">
+      <div class="col-12 text-light autoHeight">
+        <div class="row ">
+          <div class="col-6 text-start mt-3">
+            <span class="">{{ event.name }}</span>
+          </div>
+          <div class="col-6 text-end mt-3">
+            <span class="">{{ new
+              Date(event.startDate).toDateString('en-us')
+            }}</span>
+          </div>
+          <div class="col-6 text-start">
+            <h6>{{ event.location }}</h6>
+          </div>
+          <div class="col-6 text-end">
+            <span class="">Starting at {{ new
+              Date(event.startDate).toLocaleTimeString('en-us')
+            }}</span>
+          </div>
+          <!-- LEFT HALF -->
+          <div class="col-12 d-flex align-items-center">
+            <img class="cardHeight my-4" :src="event.coverImg" alt="" srcset="">
+          </div>
+          <!-- RIGHT HALF -->
+          <div class="col-12">
+            <div v-if="event.creatorId == account.id" class="row">
+              <div type="button" id="eventToggle" data-bs-toggle="dropdown"
+                class="col-1 offset-10 text-end dropdown-toggle">
+                <i class="mdi mdi-dots-horizontal"></i>
+              </div>
+              <ul class="dropdown-menu dropdown-menu-dark col-2" aria-labelledby="eventToggle">
+                <li><a class="dropdown-item" href="#">Edit Event</a></li>
+                <li><a @click="cancelEvent" class="dropdown-item" href="#">Cancel Event</a></li>
+                <li><a @click="deleteEvent" class="dropdown-item" href="#">Delete Event</a></li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <p>{{ event.description }}</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div v-if="event.capacity != 0 && event.isCanceled == false" class="col-6 text-start">
+                <h6><span class="blue">{{ event.capacity }}</span> tickets left.</h6>
+              </div>
+              <div v-if="event.isCanceled == true" class="col-6 text-start">
+                <h6 class="text-danger">{{ event.name }} {{ event.location }} has been cancelled.</h6>
+              </div>
+              <div v-if="event.capacity == 0" class="col-6 text-start">
+                <h6 class="text-danger">{{ event.name }} {{ event.location }} is SOLD OUT!</h6>
+              </div>
+              <div v-if="!isAttending && event.capacity != 0 && event.isCanceled == false" class="col-6 text-end mb-3">
+                <button @click="createTicket" class="btn btn-warning">Reserve <i
+                    class="mdi mdi-account-check"></i></button>
+              </div>
+              <div v-if="isAttending && event.isCanceled == false" class="col-6 text-end mb-3">
                 <button @click="deleteTicket" class="btn btn-warning">Unreserve <i
                     class="mdi mdi-account-check"></i></button>
               </div>
@@ -162,12 +230,19 @@ export default {
 }
 
 .autoHeight {
+  height: 100%;
   background: rgba(59, 50, 97, 0.29);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
   color: white;
   text-shadow: 2px 1px 2px black;
+}
+
+.cardHeight {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 
@@ -180,7 +255,7 @@ export default {
 }
 
 .fillerHeight {
-  height: 25%;
+  height: 15%;
 }
 
 .footerHeight {

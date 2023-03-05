@@ -13,8 +13,8 @@
             class="col-5 m-1 m-md-0 col-md-2 btn text-light">Exhibits</button>
           <button @click="filterEvents('sport')" :class="[filterType == 'sport' ? 'filterButton' : '']"
             class="col-5 m-1 m-md-0 col-md-2 btn text-light">Sports</button>
-          <button @click="filterEvents('')" :class="[filterType == '' ? 'filterButton' : '']"
-            class="col-5 m-1 m-md-0 col-md-2 btn text-light rightButton">Reset</button>
+          <button @click="filterEvents('digital')" :class="[filterType == 'digital' ? 'filterButton' : '']"
+            class="col-5 m-1 m-md-0 col-md-2 btn text-light rightButton">Digital</button>
         </div>
       </div>
     </div>
@@ -75,9 +75,5 @@ button {
 
 .rightButton:hover {
   border-right: 1px black solid
-}
-
-.newHeight {
-  height: 7vh;
 }
 </style>
