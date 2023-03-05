@@ -18,7 +18,9 @@ class EventsService {
       event.startDate = new Date(event.startDate).getTime();
       // console.log(event.startDate);
       if (event.startDate > todaysDate) {
-        AppState.events.push(event);
+        AppState.currentEvents.push(event);
+      } else {
+        AppState.pastEvents.push(event);
       }
     });
   }

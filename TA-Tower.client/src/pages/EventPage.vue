@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <EventCard />
   </div>
@@ -18,7 +17,6 @@
       <CommentBox />
     </div>
   </div>
-
 </template>
 
 <script>
@@ -56,7 +54,7 @@ export default {
       }
       catch (error) {
         console.error(error);
-        // @ts-ignore 
+        // @ts-ignore
         Pop.error(("[ERROR]"), error.message);
       }
     }
@@ -66,7 +64,7 @@ export default {
         await eventsService.getTicketHolders(eventId)
       } catch (error) {
         console.error(error)
-        // @ts-ignore 
+        // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
     }
@@ -76,7 +74,7 @@ export default {
         await eventsService.getEventComments(eventId)
       } catch (error) {
         console.error(error)
-        // @ts-ignore 
+        // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
     }
@@ -86,7 +84,7 @@ export default {
         await accountService.getAccount()
       } catch (error) {
         console.error(error)
-        // @ts-ignore 
+        // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
     }

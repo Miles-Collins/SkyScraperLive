@@ -1,19 +1,21 @@
 <template>
   <div class="row my-5 d-flex justify-content-center newHeight">
-    <div class="col-11 text-light">
-      <div class="row text-light">
-        <button @click="filterEvents('')" value="" :class="[filterType == '' ? 'filterButton' : '']"
-          class=" col-2 btn text-light">All</button>
-        <button @click="filterEvents('concert')" :class="[filterType == 'concert' ? 'filterButton' : '']"
-          class="col-2 btn text-light">Concerts</button>
-        <button @click="filterEvents('convention')" :class="[filterType == 'convention' ? 'filterButton' : '']"
-          class="col-2 btn btn-outline text-light">Conventions</button>
-        <button @click="filterEvents('exhibits')" :class="[filterType == 'exhibits' ? 'filterButton' : '']"
-          class="col-2 btn text-light">Exhibits</button>
-        <button @click="filterEvents('sport')" :class="[filterType == 'sport' ? 'filterButton' : '']"
-          class="col-2 btn text-light">Sports</button>
-        <button @click="filterEvents('')" :class="[filterType == '' ? 'filterButton' : '']"
-          class="col-2 btn text-light rightButton">Reset</button>
+    <div>
+      <div class="col-12 col-md-12 text-light">
+        <div class="row d-flex justify-content-center text-light">
+          <button @click="filterEvents('')" value="" :class="[filterType == '' ? 'filterButton' : '']"
+            class="col-5 m-1 m-md-0 col-md-2 btn text-light">All</button>
+          <button @click="filterEvents('concert')" :class="[filterType == 'concert' ? 'filterButton' : '']"
+            class="col-5 m-1 m-md-0 col-md-2 btn text-light">Concerts</button>
+          <button @click="filterEvents('convention')" :class="[filterType == 'convention' ? 'filterButton' : '']"
+            class="col-5 m-1 m-md-0 col-md-2 btn btn-outline text-light">Conventions</button>
+          <button @click="filterEvents('exhibits')" :class="[filterType == 'exhibits' ? 'filterButton' : '']"
+            class="col-5 m-1 m-md-0 col-md-2 btn text-light">Exhibits</button>
+          <button @click="filterEvents('sport')" :class="[filterType == 'sport' ? 'filterButton' : '']"
+            class="col-5 m-1 m-md-0 col-md-2 btn text-light">Sports</button>
+          <button @click="filterEvents('')" :class="[filterType == '' ? 'filterButton' : '']"
+            class="col-5 m-1 m-md-0 col-md-2 btn text-light rightButton">Reset</button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 <template>
-  <div @click="routeToEventPage()" :style="{ backgroundImage: `url(${event.coverImg})` }" class="test text-center row">
+  <div @click="routeToEventPage()" :style="{ backgroundImage: `url(${event.coverImg})` }"
+    class="test text-center selectable row">
     <div v-if="event.isCanceled == false && event.capacity > 0" class="col-12 fillBox">
     </div>
     <div v-if="event.isCanceled == false && event.capacity > 0" class="col-12 autoHeight">
@@ -77,6 +78,8 @@ export default {
 
 <style scoped>
 .test {
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
   background-size: cover;
   background-repeat: no-repeat;
   height: 30Vh;
@@ -84,7 +87,7 @@ export default {
   margin-top: 5vh;
   margin-left: .1px;
   margin-right: .1px;
-  border-radius: 3%;
+  border-radius: 25px;
 }
 
 .fillBox {
@@ -101,19 +104,17 @@ export default {
   color: white;
   text-shadow: 2px 1px 2px black;
   font-size: .85rem;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .autoHeightCanceled {
-  height: 100%;
   text-align: start;
-  background: rgba(16, 15, 15, 0.72);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.6px);
+  backdrop-filter: blur(2.6px);
   -webkit-backdrop-filter: blur(7.6px);
   color: white;
   text-shadow: 2px 1px 2px black;
   position: static;
-  border-radius: 5px;
 }
 
 .green {
@@ -138,6 +139,13 @@ export default {
   height: 75%;
   width: 90%;
   top: 10%;
+}
 
+h6 {
+  font-size: .9rem;
+}
+
+.selectable:hover {
+  box-shadow: 0 0 11px antiquewhite;
 }
 </style>
