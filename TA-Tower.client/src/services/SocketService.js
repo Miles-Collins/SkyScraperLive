@@ -1,16 +1,15 @@
-import Pop from '../utils/Pop'
-import { SocketHandler } from '../utils/SocketHandler'
+import { SocketHandler } from "../utils/SocketHandler";
+import Pop from "../utils/Pop";
 
 class SocketService extends SocketHandler {
   constructor() {
-    super()
-    this
-      .on('error', this.onError)
+    super();
+    this.on("error", this.onError);
   }
 
   onError(e) {
-    Pop.toast(e.message, 'error')
+    Pop.toast(e.message, "error");
   }
 }
 
-export const socketService = new SocketService()
+export const socketService = new SocketService();
