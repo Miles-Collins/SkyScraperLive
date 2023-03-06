@@ -56,6 +56,8 @@
       "titleBar.inactiveForeground": "#15202b99"
     },
     "peacock.color": "#c4768b",
-    "liveServer.settings.multiRootWorkspaceName": "client"
+    "liveServer.settings.multiRootWorkspaceName": "client",
+    "turboConsoleLog.insertEnclosingClass": true,
+    "turboConsoleLog.insertEnclosingFunction": true
   }
 }

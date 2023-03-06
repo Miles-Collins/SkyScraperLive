@@ -6,7 +6,7 @@ class AccountService {
   async getAccount() {
     try {
       const res = await api.get("/account");
-      console.log("[ACCOUNT INFO]", res.data);
+      logger.log("[ACCOUNT INFO]", res.data);
       AppState.account = res.data;
     } catch (err) {
       logger.error("HAVE YOU STARTED YOUR SERVER YET???", err);
@@ -15,13 +15,13 @@ class AccountService {
 
   async getTickets() {
     const res = await api.get("/account/tickets");
-    console.log("[MY TICKETS]", res.data);
+    logger.log("[MY TICKETS]", res.data);
     AppState.myTickets = res.data;
   }
 
   async editAccount(accountBody) {
     const res = await api.put("/account", accountBody);
-    console.log("[EDITED ACCOUNT]", res.data);
+    logger.log("[EDITED ACCOUNT]", res.data);
   }
 }
 

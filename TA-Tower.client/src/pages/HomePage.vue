@@ -41,13 +41,14 @@ import EventBanner from "../components/HomePage/EventBanner.vue";
 import EventCard from "../components/HomePage/EventCard.vue";
 import EventFilterBar from "../components/HomePage/EventFilterBar.vue";
 import { eventsService } from "../services/EventsService";
+import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
 export default {
   setup() {
     onMounted(() => {
       getCurrentEvents();
-      console.log(todaysDate.getTime())
+      logger.log(todaysDate.getTime())
     });
     const todaysDate = new Date();
 
@@ -56,7 +57,7 @@ export default {
         await eventsService.getCurrentEvents();
       }
       catch (error) {
-        console.error(error);
+        logger.error(error);
         // @ts-ignore
         Pop.error(("[ERROR]"), error.message);
       }

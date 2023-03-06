@@ -45,7 +45,7 @@ export default {
           logger.log('[EVENT NAME]', eventName)
           await eventsService.filterEvents(eventName)
         } catch (error) {
-          console.error(error)
+          logger.error(error)
           // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }

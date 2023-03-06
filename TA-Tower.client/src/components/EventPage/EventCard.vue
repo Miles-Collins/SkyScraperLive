@@ -149,6 +149,7 @@ import { useRoute, useRouter } from "vue-router";
 import { AppState } from "../../AppState";
 import { eventsService } from "../../services/EventsService";
 import { ticketsService } from "../../services/TicketsService";
+import { logger } from "../../utils/Logger";
 import Pop from "../../utils/Pop";
 
 
@@ -168,10 +169,10 @@ export default {
 
       async createTicket() {
         try {
-          console.log('[EVENT ROUTE ID]', route.params.id)
+          logger.log('[EVENT ROUTE ID]', route.params.id)
           const res = await ticketsService.createTicket(route.params.id)
         } catch (error) {
-          console.error(error)
+          logger.error(error)
           // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }
@@ -179,11 +180,11 @@ export default {
 
       async deleteTicket() {
         try {
-          console.log('[TICKET ID]', this.isAttending.id)
+          logger.log('[TICKET ID]', this.isAttending.id)
           const ticketId = this.isAttending.id
           await ticketsService.deleteTicket(ticketId)
         } catch (error) {
-          console.error(error)
+          logger.error(error)
           // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }
@@ -194,7 +195,7 @@ export default {
           let eventId = route.params.id
           await eventsService.cancelEvent(eventId)
         } catch (error) {
-          console.error(error)
+          logger.error(error)
           // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }
@@ -205,7 +206,7 @@ export default {
           let eventId = route.params.id
           await eventsService.deleteEvent(eventId)
         } catch (error) {
-          console.error(error)
+          logger.error(error)
           // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }

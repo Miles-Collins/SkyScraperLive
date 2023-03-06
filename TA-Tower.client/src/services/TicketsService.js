@@ -1,10 +1,11 @@
 import { AppState } from "../AppState";
+import { logger } from "../utils/Logger";
 import { api } from "./AxiosService";
 
 class TicketsService {
   async createTicket(eventId) {
     const res = await api.post(`api/tickets/${eventId}`);
-    console.log("[CREATED TICKET]", res.data);
+    logger.log("[CREATED TICKET]", res.data);
     AppState.tickets.push(res.data);
     AppState.ticketHolders.push(res.data);
     AppState.activeEvent.capacity--;
@@ -12,7 +13,7 @@ class TicketsService {
 
   async deleteTicket(ticketId) {
     const res = await api.delete(`api/tickets/${ticketId}`);
-    console.log("[DELETED TICKET]", res.data);
+    logger.log("[DELETED TICKET]", res.data);
     AppState.tickets = AppState.tickets.filter(
       (ticket) => ticket.id != ticketId
     );

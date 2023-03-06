@@ -1,6 +1,4 @@
 <template>
-
-
   <form @submit.prevent="handleSubmit" class="row bg-white text-dark p-4  eventFont">
     <div class="col-12 text-center mb-2">
       <h2>Create Event</h2>
@@ -59,7 +57,6 @@
   startDate: { type: Date, required: true},
   isCanceled: {type: Boolean, required: true, default: false},
   type: {type: String, enum: ['convention', 'sport', 'digital', 'concert'], required: true, lowercase: true, default: 'concert'}, -->
-
 </template>
 
 <script>

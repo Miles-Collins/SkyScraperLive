@@ -13,6 +13,7 @@ import { ref } from "vue";
 import Pop from "../../utils/Pop";
 import { commentsService } from "../../services/CommentsService"
 import { AppState } from "../../AppState";
+import { logger } from "../../utils/Logger";
 
 export default {
   props: { event: { type: Object, required: true } },
@@ -26,13 +27,13 @@ export default {
       editable,
       async handleSubmit() {
         try {
-          console.log('[EVENT ID]', AppState.activeEvent.id);
+          logger.log('[EVENT ID]', AppState.activeEvent.id);
           editable.value.eventId = AppState.activeEvent.id
-          console.log('[COMMENT]', editable.value);
+          logger.log('[COMMENT]', editable.value);
           await commentsService.createComment(editable.value)
-          ref = {}
+          editable = {}
         } catch (error) {
-          console.error(error)
+          logger.error(error)
           // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }

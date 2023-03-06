@@ -14,7 +14,9 @@
     <div v-if="event.isCanceled == true" class="col-12 autoHeightCanceled">
       <div class="row fillBox">
         <div class="col-12 ">
-          <img class="img-fluid cancelled" src="src/assets/img/Cancelled.png" alt="" srcset="">
+          <img class="img-fluid cancelled"
+            src="/Users/miles/CodeWorks/Checkpoints/Tower_V2/TA-Tower.client/src/assets/img/Cancelled.png" alt=""
+            srcset="">
         </div>
       </div>
       <div class="row autoHeight">
@@ -28,7 +30,9 @@
     <div v-if="event.capacity == 0" class="col-12 autoHeightCanceled">
       <div class="row fillBox">
         <div class="col-12 ">
-          <img class="img-fluid soldOut" src="src/assets/img/Sold_Out.png" alt="" srcset="">
+          <img class="img-fluid soldOut"
+            src="/Users/miles/CodeWorks/Checkpoints/Tower_V2/TA-Tower.client/src/assets/img/Sold_Out.png" alt=""
+            srcset="">
         </div>
       </div>
       <div class="row autoHeight">
@@ -44,6 +48,7 @@
 
 <script>
 import { useRouter } from "vue-router"
+import { logger } from "../../utils/Logger"
 import Pop from "../../utils/Pop"
 
 
@@ -62,11 +67,11 @@ export default {
     return {
       routeToEventPage() {
         try {
-          console.log('[EVENT PROPS]', props.event.id)
+          logger.log('[EVENT PROPS]', props.event.id)
           const eventId = props.event.id
           router.push({ name: 'Event', params: { id: eventId } })
         } catch (error) {
-          console.error(error)
+          logger.error(error)
           // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }

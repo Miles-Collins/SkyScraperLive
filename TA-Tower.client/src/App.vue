@@ -5,7 +5,6 @@
   <main class="container">
     <router-view />
   </main>
-
 </template>
 
 <script>
@@ -25,8 +24,8 @@ export default {
       try {
         const res = await accountService.getAccount()
       } catch (error) {
-        console.error(error)
-        // @ts-ignore 
+        logger.error(error)
+        // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
     }

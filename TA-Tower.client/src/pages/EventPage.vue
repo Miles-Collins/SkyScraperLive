@@ -36,7 +36,7 @@ import { accountService } from "../services/AccountService";
 export default {
   setup() {
     onMounted(() => {
-      console.log('[ACCOUNT INFO]', AppState.account);
+      logger.log('[ACCOUNT INFO]', AppState.account);
       getEvent();
       getTicketHolders()
       getAccount()
@@ -47,13 +47,13 @@ export default {
     const eventId = route.params.id
     async function getEvent() {
       try {
-        console.log("[EVENT ROUTE ID]", route.params);
+        logger.log("[EVENT ROUTE ID]", route.params);
         // SETTING VARIABLE FOR ROUTE PARAMS -CLEANER CODE-
         let eventId = route.params.id;
         await eventsService.getEventById(eventId);
       }
       catch (error) {
-        console.error(error);
+        logger.error(error);
         // @ts-ignore
         Pop.error(("[ERROR]"), error.message);
       }
@@ -63,7 +63,7 @@ export default {
         logger.log('[EVENT ID]', eventId)
         await eventsService.getTicketHolders(eventId)
       } catch (error) {
-        console.error(error)
+        logger.error(error)
         // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
@@ -73,7 +73,7 @@ export default {
       try {
         await eventsService.getEventComments(eventId)
       } catch (error) {
-        console.error(error)
+        logger.error(error)
         // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
@@ -83,7 +83,7 @@ export default {
       try {
         await accountService.getAccount()
       } catch (error) {
-        console.error(error)
+        logger.error(error)
         // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }

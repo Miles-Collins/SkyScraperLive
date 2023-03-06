@@ -5,7 +5,10 @@ import { api } from "./AxiosService";
 class EventsService {
   async getEvents() {
     const res = await api.get("api/events");
-    console.log("[ALL EVENTS]", res.data);
+
+    logger.log("Miles => EventsService => getEvents => res:", res);
+
+    logger.log("[ALL EVENTS]", res.data);
     AppState.events = res.data;
   }
 
@@ -13,10 +16,10 @@ class EventsService {
     const todaysDate = new Date().getTime();
     const res = await api.get("api/events");
     let events = res.data;
-    console.log("[CURRENT EVENTS]", events);
+    logger.log("EventsService => getCurrentEvents => events:", events);
     events.forEach((event) => {
       event.startDate = new Date(event.startDate).getTime();
-      // console.log(event.startDate);
+      // logger.log(event.startDate);
       if (
         event.startDate > todaysDate &&
         !AppState.currentEvents.some((event) => event.id == event.id)
@@ -79,20 +82,20 @@ class EventsService {
 
   async createEvent(eventBody) {
     const res = await api.post("api/events", eventBody);
-    console.log("[CREATED EVENT]", res.data);
+    logger.log("[CREATED EVENT]", res.data);
     AppState.currentEvents.unshift(res.data);
     return res.data;
   }
 
   async cancelEvent(eventId) {
     const res = await api.delete(`api/events/${eventId}`);
-    console.log("[DELETED EVENT]", res.data);
+    logger.log("[DELETED EVENT]", res.data);
     AppState.events = AppState.events.filter((events) => events.id != eventId);
     AppState.events.push(res.data);
   }
   async deleteEvent(eventId) {
     const res = await api.delete(`api/events/${eventId}/delete`);
-    console.log("[DELETED EVENT]", res.data);
+    logger.log("[DELETED EVENT]", res.data);
     AppState.events = AppState.events.filter((events) => events.id != eventId);
   }
 }

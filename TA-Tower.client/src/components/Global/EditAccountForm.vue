@@ -1,5 +1,4 @@
 <template>
-
   <form @submit.prevent="handleSubmit" action="">
     <div>
       <h1>Edit Account</h1>
@@ -22,13 +21,13 @@
       </button>
     </div>
   </form>
-
 </template>
 
 <script>
 import { ref } from "vue";
 import { AppState } from "../../AppState";
 import { accountService } from "../../services/AccountService";
+import { logger } from "../../utils/Logger";
 import Pop from "../../utils/Pop";
 
 
@@ -44,11 +43,11 @@ export default {
       editable,
       async handleSubmit() {
         try {
-          console.log('[EDITED ACCOUNT DATA]', editable.value);
+          logger.log('[EDITED ACCOUNT DATA]', editable.value);
           await accountService.editAccount(editable.value)
         } catch (error) {
-          console.error(error)
-          // @ts-ignore 
+          logger.error(error)
+          // @ts-ignore
           Pop.error(('[ERROR]'), error.message)
         }
       }
@@ -58,6 +57,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

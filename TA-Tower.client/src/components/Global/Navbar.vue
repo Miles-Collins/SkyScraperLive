@@ -2,10 +2,11 @@
   <nav class="navbar navbar-expand-lg navBarColor d-flex align-items-center py-0 px-3">
     <router-link class="navbar-brand " :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center mt-3">
-        <img class="towerImage" alt="logo" src="src/assets/img/TowerLogo.png" />
+        <img class="towerImage" alt="logo"
+          src="/Users/miles/CodeWorks/Checkpoints/Tower_V2/TA-Tower.client/src/assets/img/TowerLogo.png" />
       </div>
     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+    <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,7 +29,6 @@
   <Modal id="eventModal">
     <EventForm />
   </Modal>
-
 </template>
 
 <script>

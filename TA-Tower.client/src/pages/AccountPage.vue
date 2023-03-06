@@ -38,6 +38,7 @@ import Ticket from "../components/AccountPage/Ticket.vue";
 import { accountService } from "../services/AccountService";
 import { api } from "../services/AxiosService";
 import { eventsService } from "../services/EventsService";
+import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 export default {
   setup() {
@@ -52,7 +53,7 @@ export default {
         await eventsService.getEventsByAccountId(AppState.account.id);
       }
       catch (error) {
-        console.error(error);
+        logger.error(error);
         // @ts-ignore
         Pop.error(("[ERROR]"), error.message);
       }
@@ -62,7 +63,7 @@ export default {
       try {
         await accountService.getTickets()
       } catch (error) {
-        console.error(error)
+        logger.error(error)
         // @ts-ignore
         Pop.error(('[ERROR]'), error.message)
       }
