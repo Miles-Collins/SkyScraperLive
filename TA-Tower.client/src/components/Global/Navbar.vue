@@ -3,7 +3,7 @@
     <router-link class="navbar-brand " :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center mt-3">
         <img class="towerImage" alt="logo"
-          src="/Users/miles/CodeWorks/Checkpoints/Tower_V2/TA-Tower.client/src/assets/img/TowerLogo.png" />
+          src="src\assets\img\TowerLogo.png" />
       </div>
     </router-link>
     <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"

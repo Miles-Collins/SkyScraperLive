@@ -15,12 +15,12 @@
       <div class="row fillBox">
         <div class="col-12 ">
           <img class="img-fluid cancelled"
-            src="/Users/miles/CodeWorks/Checkpoints/Tower_V2/TA-Tower.client/src/assets/img/Cancelled.png" alt=""
+            src="src\assets\img\Cancelled.png" alt=""
             srcset="">
         </div>
       </div>
       <div class="row autoHeight">
-        <h5 class="col-12">{{ event.name }}</h5>
+        <h6 class="col-12">{{ event.name }}</h6>
         <div class="col-12">{{ event.location }}</div>
         <div class="col-12"><i class="mdi mdi-calendar"></i>{{ new Date(event.startDate).toLocaleDateString() }}
         </div>
@@ -31,12 +31,12 @@
       <div class="row fillBox">
         <div class="col-12 ">
           <img class="img-fluid soldOut"
-            src="/Users/miles/CodeWorks/Checkpoints/Tower_V2/TA-Tower.client/src/assets/img/Sold_Out.png" alt=""
+            src="src\assets\img\Sold_Out.png" alt=""
             srcset="">
         </div>
       </div>
       <div class="row autoHeight">
-        <h5 class="col-12">{{ event.name }}</h5>
+        <h6 class="col-12">{{ event.name }}</h6>
         <div class="col-12">{{ event.location }}</div>
         <div class="col-12"><i class="mdi mdi-calendar"></i>{{ new Date(event.startDate).toLocaleDateString() }}
         </div>
